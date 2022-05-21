@@ -267,9 +267,9 @@ class EasyLeveling extends EventEmitter {
         for (let i = 0; i < 6; i++) {
             if (!leaders[i]) return
             leaders.push(XPforGuild[i])
-
+            console.log(leaders[i])
         }
-
+        console.log(leaders)
         return leaders
     }
 
