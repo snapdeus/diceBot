@@ -269,6 +269,9 @@ class EasyLeveling extends EventEmitter {
             leaders.push(XPforGuild[i])
 
         }
+        if (leaders.length > 5) {
+            leaders.length = 5;
+        }
 
         return leaders
     }
