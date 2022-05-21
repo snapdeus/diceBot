@@ -17,7 +17,7 @@ module.exports = {
         const lastMessage = await db.get(`${ user }-${ guild }.timestamp`);
 
         if (lastMessage !== null && client.leveling.diceCooldown - (Date.now() - lastMessage) > 0) {
-            console.log('cooldown active')
+            // console.log('cooldown active')
             client.leveling.emit(events.diceCooldownActive, channelId, user)
             return
         }
@@ -36,7 +36,7 @@ module.exports = {
 
             //gain level and xp
             if (rank.xp + stakes > curLevelUp) {
-                console.log('xp gain should level up')
+                // console.log('xp gain should level up')
                 let difference = (rank.xp + stakes) - curLevelUp
                 client.leveling.addOneLevel(user, guild, 1)
                 client.leveling.addXP(user, guild, difference)

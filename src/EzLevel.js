@@ -64,7 +64,7 @@ class EasyLeveling extends EventEmitter {
             //cooldown
             const lastMessage = await this.db.get(`${ userId }-${ guildId }.timestamp`)
             if (lastMessage !== null && this.cooldown - (Date.now() - lastMessage) > 0) {
-                console.log('cooldown active')
+                // console.log('cooldown active')
                 this.emit(events.cooldownActive, channelId, userId)
             }
             //add xp, new timestamp

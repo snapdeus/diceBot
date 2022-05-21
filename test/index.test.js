@@ -57,7 +57,7 @@ client.on('ready', () => {
                 message.channel.send('Please play dice in the dice channel.')
                 return
             }
-            console.log(command)
+            // console.log(command)
             command.execute(client, message, args);
         } catch (error) {
             console.error(error);
