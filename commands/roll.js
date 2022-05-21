@@ -18,7 +18,7 @@ module.exports = {
 
         if (lastMessage !== null && client.leveling.diceCooldown - (Date.now() - lastMessage) > 0) {
             console.log('cooldown active')
-            client.leveling.emit(events.diceCooldownActive, channelId)
+            client.leveling.emit(events.diceCooldownActive, channelId, user)
             return
         }
 

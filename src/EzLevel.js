@@ -29,7 +29,7 @@ class EasyLeveling extends EventEmitter {
      * @param {string} userId The id of the user you want to add levels
      * @param {string} guildId The id of the guild that the user is in
      */
-    async addLevels(userId, guildId, channelId, timestamp, username) {
+    async addLevels(userId, guildId, channelId, timestamp, username, author) {
         if (!userId) throw new Error('Easy Leveling Error: A valid user id must be provided')
         if (!guildId) throw new Error('Easy Level Error: A valid guild id must be provided')
         if (!channelId) throw new Error('Easy Level Error: A valid channel id must be provided')
@@ -58,15 +58,14 @@ class EasyLeveling extends EventEmitter {
                 const nextLevel = this.levelUpXP * (Math.pow(2, newLevel) - 1)
                 await this.db.set(`${ userId }-${ guildId }.nextLevel`, nextLevel)
                 const lastLevel = newLevel - 1
-                this.emit(events.UserLevelUpEvent, newLevel, lastLevel, userId, guildId, channelId)
+                this.emit(events.UserLevelUpEvent, newLevel, lastLevel, userId, guildId, channelId, username, author)
                 return
             }
             //cooldown
             const lastMessage = await this.db.get(`${ userId }-${ guildId }.timestamp`)
             if (lastMessage !== null && this.cooldown - (Date.now() - lastMessage) > 0) {
                 console.log('cooldown active')
-                this.emit(events.cooldownActive, channelId)
-                return
+                this.emit(events.cooldownActive, channelId, userId)
             }
             //add xp, new timestamp
             await this.db.set(`${ userId }-${ guildId }.timestamp`, timestamp)
@@ -265,11 +264,12 @@ class EasyLeveling extends EventEmitter {
             return b.level - a.level || b.xp - a.xp
         })
         let leaders = []
-        for (let i = 0; i < allData.length; i++) {
+        for (let i = 0; i < 6; i++) {
 
             leaders.push(XPforGuild[i])
+
         }
-        // console.log(leaders)
+
         return leaders
     }
 

@@ -9,8 +9,8 @@ const options = {
     startingLevel: 1,
     levelUpXP: 10,
     database: 'sqlite',
-    cooldown: 1000,
-    diceCooldown: 4000
+    cooldown: 2000,
+    diceCooldown: 5000
 }
 
 const fs = require('fs')
@@ -43,7 +43,7 @@ client.on('ready', () => {
 
         //command handler (set prefix in config.json)
         if (!message.content.startsWith(config.PREFIX)) {
-            client.leveling.addLevels(message.author.id, message.guild.id, message.channel.id, message.createdTimestamp, message.author.username)
+            client.leveling.addLevels(message.author.id, message.guild.id, message.channel.id, message.createdTimestamp, message.author.username, message.author)
             return;
         }
 
@@ -53,6 +53,11 @@ client.on('ready', () => {
         if (!client.commands.has(commandName)) return;
         const command = client.commands.get(commandName);
         try {
+            if (command.name === 'roll' && message.channel.id !== config.XPCHANNEL) {
+                message.channel.send('Please play dice in the dice channel.')
+                return
+            }
+            console.log(command)
             command.execute(client, message, args);
         } catch (error) {
             console.error(error);
@@ -60,14 +65,19 @@ client.on('ready', () => {
         }
 
     })
-client.leveling.on('UserLevelUp', (newLevel, lastLevel, userId, guildId, channelId) => {
-    client.channels.cache.get(channelId).send(`Congrats <@${ userId }>! You have advanced to level ${ newLevel }. Your old level was level ${ lastLevel }`)
+client.leveling.on('UserLevelUp', (newLevel, lastLevel, userId, guildId, channelId, username, author) => {
+    const embed = new Discord.MessageEmbed()
+        .setThumbnail(author.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
+        .setTitle('LEVEL UP!')
+        .setDescription(`Congrats <@${ userId }>! You have advanced to level ${ newLevel }. Your old level was level ${ lastLevel }`)
+        .setColor('RED')
+    client.channels.cache.get(config.XPCHANNEL).send({ embeds: [embed] })
 })
-client.leveling.on('cooldownActive', (channelId) => {
-    client.channels.cache.get(channelId).send(`Cooldown is still active.  More XP after a wait.`)
+client.leveling.on('cooldownActive', (channelId, userId) => {
+    client.channels.cache.get(config.XPCHANNEL).send(`Cooldown is still active, <@${ userId }>.  You'll get more XP in ${ options.cooldown / 1000 } seconds.`)
 })
-client.leveling.on('diceCooldownActive', (channelId) => {
-    client.channels.cache.get(channelId).send(`Cooldown is still active.  Roll again in ${ options.diceCooldown / 1000 } seconds.`)
+client.leveling.on('diceCooldownActive', (channelId, userId) => {
+    client.channels.cache.get(config.XPCHANNEL).send(`Cooldown is still active, <@${ userId }>.  Roll again in ${ options.diceCooldown / 1000 } seconds.`)
 })
 client.leveling.on('error', (e, functionName) => {
     console.log(`An error occured at the function ${ functionName }. The error is as follows`)
