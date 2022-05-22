@@ -9,8 +9,8 @@ const options = {
     startingLevel: 1,
     levelUpXP: 10,
     database: 'sqlite',
-    cooldown: 2000,
-    diceCooldown: 5000
+    cooldown: 1000,
+    diceCooldown: 4000
 }
 
 const fs = require('fs')
@@ -53,7 +53,7 @@ client.on('ready', () => {
         if (!client.commands.has(commandName)) return;
         const command = client.commands.get(commandName);
         try {
-            if (command.name === 'roll' && message.channel.id !== config.XPCHANNEL) {
+            if (command.name === 'roll' && message.channel.id !== config.TESTXPCHANNEL) {
                 message.channel.send('Please play dice in the dice channel.')
                 return
             }
@@ -83,4 +83,4 @@ client.leveling.on('error', (e, functionName) => {
     console.log(`An error occured at the function ${ functionName }. The error is as follows`)
     console.log(e)
 })
-client.login(config.TOKEN)
+client.login(config.TESTTOKEN)

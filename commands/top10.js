@@ -7,7 +7,7 @@ module.exports = {
 
         let leaderboard = await client.leveling.getTopUser(message.guild.id)
 
-        // console.log(leaderboard)
+        console.log(leaderboard[0])
         const embed = new Discord.MessageEmbed()
             .setTitle('Haus of Decline Leaderboard')
             .setThumbnail(client.user.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
