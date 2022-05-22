@@ -53,7 +53,7 @@ client.on('ready', () => {
         if (!client.commands.has(commandName)) return;
         const command = client.commands.get(commandName);
         try {
-            if (command.name === 'roll' && message.channel.id !== config.TESTXPCHANNEL) {
+            if (command.name === 'roll' && message.channel.id !== config.XPCHANNEL) {
                 message.channel.send('Please play dice in the dice channel.')
                 return
             }
@@ -83,4 +83,4 @@ client.leveling.on('error', (e, functionName) => {
     console.log(`An error occured at the function ${ functionName }. The error is as follows`)
     console.log(e)
 })
-client.login(config.TESTTOKEN)
+client.login(config.TOKEN)
