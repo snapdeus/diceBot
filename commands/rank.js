@@ -15,6 +15,7 @@ module.exports = {
             .addField('Level: ', `${ rank.level }`)
             .addField('XP: ', `${ rank.xp }`)
             .addField('Total XP needed to level up:', `${ rank.nextLevel }`)
+            .addField('Haus Coins: ', `🪙 ${ rank.XPoverTime }`)
 
         message.channel.send({ embeds: [embed] })
 

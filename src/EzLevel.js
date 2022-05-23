@@ -98,10 +98,12 @@ class EasyLeveling extends EventEmitter {
             const level = await this.db.get(`${ userId }-${ guildId }.level`)
             const xp = await this.db.get(`${ userId }-${ guildId }.XP`)
             const nextLevel = await this.db.get(`${ userId }-${ guildId }.nextLevel`)
+            const XPoverTime = await this.db.get(`${ userId }-${ guildId }.XPoverTime`)
             const data = {
                 level: level,
                 xp: xp,
-                nextLevel: nextLevel
+                nextLevel: nextLevel,
+                XPoverTime: XPoverTime
             }
             return data
         } catch (error) {
@@ -201,8 +203,9 @@ class EasyLeveling extends EventEmitter {
         if (!amount) throw new Error('Easy Level Error: An amount must be provided!')
         if (typeof amount != 'number') throw new Error("Easy Level TypeError: Type of 'amount' must be a number")
         try {
+            const xpAmount = amount * 5;
             this.db.subtract(`${ userId }-${ guildId }.level`, amount)
-
+            this.db.subtract(`${ userId }-${ guildId }.XPoverTime`, xpAmount)
         } catch (error) {
             this.emit(events.error, error, 'reduceLevels')
         }
@@ -236,6 +239,19 @@ class EasyLeveling extends EventEmitter {
 
             this.db.subtract(`${ userId }-${ guildId }.XPoverTime`, amount)
             this.db.subtract(`${ userId }-${ guildId }.XP`, amount)
+        } catch (error) {
+            this.emit(events.error, error, 'reduceXP')
+        }
+    }
+    async reduceXPoverTime(userId, guildId, amount) {
+        if (!userId) throw new Error('Easy Level Error: A valid user id must be provided!')
+        if (!guildId) throw new Error('Easy Level Error: A valid user guild must be provided!')
+        if (!amount) throw new Error('Easy Level Error: An amount must be provided!')
+        try {
+            if (typeof amount != 'number') throw new Error("Easy Level TypeError: Type of 'amount' must be a number")
+
+            this.db.subtract(`${ userId }-${ guildId }.XPoverTime`, amount)
+
         } catch (error) {
             this.emit(events.error, error, 'reduceXP')
         }
