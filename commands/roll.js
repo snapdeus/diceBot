@@ -49,7 +49,7 @@ module.exports = {
                     .setThumbnail(player.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
 
                     .setTitle('Winner! LEVEL UP!')
-                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }.  ${ message.author.username } won ${ stakes } XP points.`)
+                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }.  ${ message.author.username } won 🪙 ${ stakes } Haus Coins.`)
                     .addField('Level increased to: ', `${ rank.level }`)
                     .addField('XP increased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ nextLevel }`)
@@ -65,7 +65,7 @@ module.exports = {
                     .setThumbnail(player.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
 
                     .setTitle('Winner!')
-                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }.  ${ message.author.username } won ${ stakes } XP points.`)
+                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }.  ${ message.author.username } won 🪙 ${ stakes } Haus Coins.`)
                     .addField('Level remained the same: ', `${ rank.level }`)
                     .addField('XP increased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ curLevelUp }`)
@@ -87,8 +87,8 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                     .setThumbnail(player.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
 
-                    .setTitle('Sorry, Try Again :[')
-                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }.  ${ message.author.username } lost ${ stakes } XP points.`)
+                    .setTitle('Sorry, you lost.')
+                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }.  ${ message.author.username } lost 🪙 ${ stakes } Haus Coins.`)
                     .addField('Level remained the same: ', `${ rank.level }`)
                     .addField('XP decreased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ curLevel }`)
@@ -116,8 +116,8 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                     .setThumbnail(player.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
 
-                    .setTitle('Sorry, Try Again. LEVEL LOST!')
-                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }..  ${ message.author.username } lost ${ stakes } XP points.`)
+                    .setTitle('Sorry, you lost. LEVEL LOST!')
+                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }..  ${ message.author.username } lost 🪙 ${ stakes } Haus Coins.`)
                     .addField('Level decreased to: ', `${ rank.level }`)
                     .addField('XP decreased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ nextLevel }`)
@@ -139,8 +139,8 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                     .setThumbnail(player.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
 
-                    .setTitle('Sorry, Try Again. LEVEL LOST!')
-                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }..  ${ message.author.username } lost ${ stakes } XP points.`)
+                    .setTitle('Sorry, you lost. LEVEL LOST!')
+                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }..  ${ message.author.username } lost 🪙 ${ stakes } Haus Coins.`)
                     .addField('Level decreased to: ', `${ rank.level }`)
                     .addField('XP decreased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ nextLevel }`)
@@ -154,8 +154,8 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                     .setThumbnail(player.displayAvatarURL({ format: 'png', dynamic: true, size: 1024 }))
 
-                    .setTitle('Sorry, Try Again.')
-                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }.  ${ message.author.username } lost ${ stakes } XP points.`)
+                    .setTitle('Sorry, you lost.')
+                    .setDescription(`${ message.author.username } rolled a ${ dice[playerDiceRoll - 1] } ${ playerDiceRoll } and I rolled a ${ dice[botDiceRoll - 1] } ${ botDiceRoll }.  ${ message.author.username } lost 🪙 ${ stakes } Haus Coins.`)
                     .addField('Level remained the same: ', `${ rank.level }`)
                     .addField('XP decreased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ curLevel }`)

@@ -1,15 +1,28 @@
 const axios = require('axios')
 const { breads } = require('../resources/breads')
 const Discord = require('discord.js')
+const db = require('quick.db')
 
 module.exports = {
     name: 'bread',
     description: 'replies with bread',
     async execute(client, message, args) {
+
         let user = message.author.id
         let username = message.author.username
         let guild = message.guild.id
         let rank = await client.leveling.getUserLevel(user, guild, username)
+
+
+        const bag = new db.table('bag')
+
+        const dbHasBag = bag.has(`${ user }`)
+        if (!dbHasBag) {
+            bag.set(`${ user }.bread`, [])
+
+        }
+
+
         if (rank.XPoverTime < 35) {
             const embed = new Discord.MessageEmbed()
                 .setTitle("Insufficient Funds")
@@ -21,6 +34,11 @@ module.exports = {
         }
 
         let bread = breads[(Math.floor(Math.random() * breads.length))]
+
+        bag.push(`${ user }.bread`, bread.breadId)
+
+
+
 
         client.leveling.reduceXPoverTime(user, guild, 35)
 

@@ -15,6 +15,7 @@ module.exports = {
         if (user.id === message.author.id) {
             return message.channel.send("**I can't refund you because you are the Admin and that would immoral**");
         }
+
         let refund = parseInt(args.slice(1))
 
         if (!refund || isNaN(refund)) {
@@ -37,7 +38,7 @@ module.exports = {
             .addField('Username:', `**${ message.mentions.users.first().username }**`)
             .addField('Refund Amount:', `🪙 ${ refund }`)
             .addField('Refunded by', `**${ message.author }**`)
-            .addField('New Total Balance: ', `${ rank.XPoverTime }`)
+            .addField('New Total Balance: ', `🪙 ${ rank.XPoverTime }`)
 
         message.channel.send({ embeds: [embed] })
 
