@@ -52,6 +52,7 @@ module.exports = {
                     .addField('Level increased to: ', `${ rank.level }`)
                     .addField('XP increased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ nextLevel }`)
+                    .addField('Haus Coins: ', `🪙 ${ rank.XPoverTime }`)
 
                 message.channel.send({ embeds: [embed] })
 
@@ -67,6 +68,7 @@ module.exports = {
                     .addField('Level remained the same: ', `${ rank.level }`)
                     .addField('XP increased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ curLevelUp }`)
+                    .addField('Haus Coins: ', `🪙 ${ rank.XPoverTime }`)
 
                 message.channel.send({ embeds: [embed] })
 
@@ -89,6 +91,7 @@ module.exports = {
                     .addField('Level remained the same: ', `${ rank.level }`)
                     .addField('XP decreased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ curLevel }`)
+                    .addField('Haus Coins: ', `🪙 ${ rank.XPoverTime }`)
 
                 message.channel.send({ embeds: [embed] })
 
@@ -117,6 +120,7 @@ module.exports = {
                     .addField('Level decreased to: ', `${ rank.level }`)
                     .addField('XP decreased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ nextLevel }`)
+                    .addField('Haus Coins: ', `🪙 ${ rank.XPoverTime }`)
 
                 message.channel.send({ embeds: [embed] })
 
@@ -139,6 +143,7 @@ module.exports = {
                     .addField('Level decreased to: ', `${ rank.level }`)
                     .addField('XP decreased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ nextLevel }`)
+                    .addField('Haus Coins: ', `🪙 ${ rank.XPoverTime }`)
 
                 message.channel.send({ embeds: [embed] })
                 //just lose xp
@@ -153,6 +158,7 @@ module.exports = {
                     .addField('Level remained the same: ', `${ rank.level }`)
                     .addField('XP decreased to: ', `${ rank.xp }`)
                     .addField('Total XP needed to level up:', `${ curLevel }`)
+                    .addField('Haus Coins: ', `🪙 ${ rank.XPoverTime }`)
 
                 message.channel.send({ embeds: [embed] })
 
@@ -170,6 +176,7 @@ module.exports = {
                 .addField('Level remained the same: ', `${ rank.level }`)
                 .addField('XP remained the same: ', `${ rank.xp }`)
                 .addField('Total XP needed to level up:', `${ curLevelUp }`)
+                .addField('Haus Coins: ', `🪙 ${ rank.XPoverTime }`)
 
             message.channel.send({ embeds: [embed] })
 
