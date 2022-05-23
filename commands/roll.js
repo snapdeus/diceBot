@@ -40,6 +40,7 @@ module.exports = {
                 let difference = (rank.xp + stakes) - curLevelUp
                 client.leveling.addOneLevel(user, guild, 1)
                 client.leveling.addXP(user, guild, difference)
+                client.leveling.addXPoverTime(user, guild, stakes)
 
                 rank = await client.leveling.getUserLevel(user, guild)
                 const nextLevel = 10 * (Math.pow(2, rank.level) - 1)

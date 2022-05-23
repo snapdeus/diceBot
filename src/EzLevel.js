@@ -227,7 +227,20 @@ class EasyLeveling extends EventEmitter {
             this.db.add(`${ userId }-${ guildId }.XPoverTime`, amount)
             this.db.add(`${ userId }-${ guildId }.XP`, amount)
         } catch (error) {
-            this.emit(events.error, error, 'reduceXP')
+            this.emit(events.error, error, 'addXP')
+        }
+    }
+    async addXPoverTime(userId, guildId, amount) {
+        if (!userId) throw new Error('Easy Level Error: A valid user id must be provided!')
+        if (!guildId) throw new Error('Easy Level Error: A valid user guild must be provided!')
+        if (!amount) throw new Error('Easy Level Error: An amount must be provided!')
+        try {
+            if (typeof amount != 'number') throw new Error("Easy Level TypeError: Type of 'amount' must be a number")
+
+            this.db.add(`${ userId }-${ guildId }.XPoverTime`, amount)
+
+        } catch (error) {
+            this.emit(events.error, error, 'addXPoverTime')
         }
     }
     async reduceXP(userId, guildId, amount) {
