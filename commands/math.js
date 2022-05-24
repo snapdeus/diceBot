@@ -1,5 +1,7 @@
 const { breads } = require('../resources/breads')
 const { ids } = require('../resources/id')
+
+const { dairy } = require('../resources/dairy')
 const fs = require('fs')
 
 // for (let i = 0; i < 20; i++) {
@@ -11,24 +13,24 @@ const fs = require('fs')
 
 // console.log(diceRoll)
 
-function displayBread() {
-    for (let i = 0; i <= breads.length - 1; i++) {
-        breads[i].breadId = ids[i]
+function addIDs(array, idArray) {
+    for (let i = 0; i <= array.length - 1; i++) {
+        array[i].dairyId = idArray[i]
 
     }
-    return breads
+    return array
 }
 
 
 
-const content = JSON.stringify(displayBread())
+const content = JSON.stringify(addIDs(dairy, ids))
 
-// fs.writeFile('/home/snapdeus/Documents/codingProjects/diceBot/resources/updatedBread.js', content, err => {
-//     if (err) {
-//         console.error(err)
-//         return
-//     }
+fs.writeFile('C:\\Users\\Stephen\\Documents\\codingProjects\\diceBot\\resources\\dairywithID.json', content, err => {
+    if (err) {
+        console.error(err)
+        return
+    }
 
-// })
+})
 
-// displayBread()
+// console.log(dairy.length)

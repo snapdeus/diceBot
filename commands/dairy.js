@@ -1,11 +1,11 @@
 
-const { breads } = require('../resources/breads')
+const { dairy } = require('../resources/dairy')
 const Discord = require('discord.js')
 const db = require('quick.db')
 
 module.exports = {
-    name: 'bread',
-    description: 'replies with bread',
+    name: 'dairy',
+    description: 'replies with dairy',
     async execute(client, message, args) {
 
         let user = message.author.id
@@ -18,39 +18,38 @@ module.exports = {
 
         const dbHasBag = bag.has(`${ user }`)
         if (!dbHasBag) {
-            bag.set(`${ user }.bread`, [])
+            bag.set(`${ user }.dairy`, [])
 
         }
 
 
-        if (rank.XPoverTime < 35) {
+        if (rank.XPoverTime < 50) {
             const embed = new Discord.MessageEmbed()
                 .setTitle("Insufficient Funds")
-                .addField('You do not have: ', `🪙 35 Haus Coin`)
+                .addField('You do not have: ', ` 50 Haus Coin`)
                 .addField(`Remaining Funds for ${ username }: `, `🪙 ${ rank.XPoverTime } Haus Coin`)
 
             message.channel.send({ embeds: [embed] })
             return
         }
 
-        let bread = breads[(Math.floor(Math.random() * breads.length))]
+        let dairyItem = dairy[(Math.floor(Math.random() * dairy.length))]
 
-        bag.push(`${ user }.bread`, bread.breadId)
-
-
+        bag.push(`${ user }.dairy`, dairyItem.dairyId)
 
 
-        client.leveling.reduceXPoverTime(user, guild, 35)
+
+
+        client.leveling.reduceXPoverTime(user, guild, 50)
 
         rank = await client.leveling.getUserLevel(user, guild, username)
 
         const embed = new Discord.MessageEmbed()
-            .setThumbnail(bread.Image)
-            .setTitle(bread.Name)
-            .setDescription(bread.Description)
-            .addField('Type: ', `${ bread.Type }`)
-            .addField('Origin: ', `${ bread.Origin }`)
-            .addField('You have been debited: ', `🪙 35`)
+            .setThumbnail(dairyItem.Image)
+            .setTitle(dairyItem.Name)
+            .setDescription(dairyItem.Description)
+            .addField('Origin: ', `${ dairyItem.Origin }`)
+            .addField('You have been debited: ', `🪙 50`)
             .addField(`Remaining Funds for ${ username }: `, `🪙 ${ rank.XPoverTime } Haus Coin`)
 
         message.channel.send({ embeds: [embed] })

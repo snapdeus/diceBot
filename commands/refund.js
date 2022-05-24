@@ -12,9 +12,9 @@ module.exports = {
         if (!user) {
             return message.channel.send("**Please mention the user for refund**");
         }
-        if (user.id === message.author.id) {
-            return message.channel.send("**I can't refund you because you are the Admin and that would immoral**");
-        }
+        // if (user.id === message.author.id) {
+        //     return message.channel.send("**I can't refund you because you are the Admin and that would immoral**");
+        // }
 
         let refund = parseInt(args.slice(1))
 
