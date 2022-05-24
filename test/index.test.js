@@ -9,8 +9,8 @@ const options = {
     startingLevel: 1,
     levelUpXP: 10,
     database: 'sqlite',
-    cooldown: 1000,
-    diceCooldown: 1000
+    cooldown: 1500,
+    diceCooldown: 5000
 }
 
 const fs = require('fs')
