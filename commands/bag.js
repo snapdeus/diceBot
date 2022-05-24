@@ -15,9 +15,13 @@ module.exports = {
         const dbHasBag = bag.has(`${ user }`)
         if (!dbHasBag) {
             bag.set(`${ user }.bread`, [])
-            bag.set(`${ user }.dairy`, [])
         }
 
+        const hasDairy = bag.has(`${ user }.dairy`)
+        if (!hasDairy) {
+            bag.set(`${ user }.dairy`, [])
+        }
+        console.log(hasDairy)
         const userBreadBag = bag.get(`${ user }.bread`)
         const userDairyBag = bag.get(`${ user }.dairy`)
 
@@ -34,7 +38,6 @@ module.exports = {
         const dfilterObjectArray = (arr, filterArr) => (
             arr.filter(el =>
                 filterArr.some(f =>
-
                     f === el.dairyId
                 )
             )

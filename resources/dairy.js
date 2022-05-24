@@ -99,7 +99,7 @@ exports.dairy = [
     },
     {
         Name: "Buttermilk",
-        Image: "https://assets.bonappetit.com/photos/5807e752cf8577b803cad62d/master/pass/kates-buttermilk.jpg",
+        Image: "https://i.imgur.com/P5gtN1s.jpg",
         Origin: "Ancient Indo-Eurasia",
         Description: "Refers to a number of dairy drinks. Originally, buttermilk was the liquid left behind after churning butter out of cream. This type of buttermilk is known as traditional buttermilk. Cultured buttermilk was first commercially introduced in the United States in the 1920s.",
         dairyId: "H2NrT"

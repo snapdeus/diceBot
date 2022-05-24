@@ -23,14 +23,14 @@ function addIDs(array, idArray) {
 
 
 
-const content = JSON.stringify(addIDs(dairy, ids))
+// const content = JSON.stringify(addIDs(dairy, ids))
 
-fs.writeFile('C:\\Users\\Stephen\\Documents\\codingProjects\\diceBot\\resources\\dairywithID.json', content, err => {
-    if (err) {
-        console.error(err)
-        return
-    }
+// fs.writeFile('C:\\Users\\Stephen\\Documents\\codingProjects\\diceBot\\resources\\dairywithID.json', content, err => {
+//     if (err) {
+//         console.error(err)
+//         return
+//     }
 
-})
+// })
 
 // console.log(dairy.length)

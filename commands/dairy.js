@@ -23,6 +23,7 @@ module.exports = {
         }
 
 
+
         if (rank.XPoverTime < 50) {
             const embed = new Discord.MessageEmbed()
                 .setTitle("Insufficient Funds")
