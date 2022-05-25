@@ -10,7 +10,7 @@ const options = {
     levelUpXP: 10,
     database: 'sqlite',
     cooldown: 1500,
-    diceCooldown: 5000
+    diceCooldown: 4000
 }
 
 const fs = require('fs')
@@ -53,10 +53,12 @@ client.on('ready', () => {
         if (!client.commands.has(commandName)) return;
         const command = client.commands.get(commandName);
         try {
-            if (command.name === 'roll' && message.channel.id !== config.XPCHANNEL) {
-                message.channel.send('Please play dice in the dice channel.')
+            if (command.name && message.channel.id !== config.XPCHANNEL) {
+                message.channel.send('Please use that command in the dice channel. Version 0.2 of The Butler coming soon. ;]')
                 return
             }
+
+
             // console.log(command)
             command.execute(client, message, args);
         } catch (error) {
