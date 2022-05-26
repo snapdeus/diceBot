@@ -72,7 +72,7 @@ module.exports = {
         console.log(dairyString)
 
         const embed = new Discord.MessageEmbed()
-            .setThumbnail('https://i.imgur.com/hAnfQUZ.png')
+            .setThumbnail('https://i.imgur.com/CKEcuCo.png')
             .setTitle(`${ username }'s Bag`)
             .setFooter({ text: `Current Balance: 🪙 ${ rank.XPoverTime }`, iconURL: message.author.displayAvatarURL() })
         if (breadArray.length !== 0) {
